@@ -25,6 +25,7 @@ model.fit(X, ones)
 
 coeff = model.coef_
 print(coeff)
+print('MSE: {}'.format(np.linalg.norm(np.dot(X, coeff) - ones)))
 
 xv = np.linspace(-9, 9, 400)
 yv = np.linspace(-5, 5, 400)

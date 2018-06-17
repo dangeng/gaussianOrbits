@@ -11,17 +11,16 @@ x2 = np.square(x)
 y2 = np.square(y)
 xy = x*y
 ones = np.ones(x.shape[0])
-
-model = LinearRegression(fit_intercept=False)
-
 X = np.vstack([x2,xy,y2,x,y,ones]).T
-zeros = np.zeros(x.shape[0])
 
+#model = LinearRegression(fit_intercept=False)
 #model.fit(X, zeros)
 
+# Sovle [General Form] = 1
+# and eventually subtract 1 from the intercept term
 proj = np.linalg.inv(np.dot(X.T,X) + np.eye(6))
 coeff = np.dot(np.dot(proj,X.T),ones)
-print(np.linalg.norm(coeff))
+print('MSE: {}'.format(np.linalg.norm(np.dot(X, coeff) - ones)))
 
 xv = np.linspace(-9, 9, 400)
 yv = np.linspace(-5, 5, 400)
